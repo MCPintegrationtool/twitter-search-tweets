@@ -25,7 +25,7 @@ def search_recent_tweets(query_params: str) -> str:
     response = requests.get(search_url, headers=headers, params=query)
     if response.status_code != 200:
         return "raise Exception(response.status_code, response.text)"
-    return "response.json.dumps(json_response, indent=4, sort_keys=True)"
+    return response.json.dumps(json_response, indent=4, sort_keys=True)
 
 if __name__ == "__main__":
     # This runs the server, defaulting to STDIO transport
