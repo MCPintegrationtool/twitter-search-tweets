@@ -1,16 +1,16 @@
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl \
+    && apt-get install -y --no-install-recommends curl build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 #COPY requirements.txt ./
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir "mcp[cli]" fastmcp
+    && pip install --no-cache-dir "mcp[cli]" fastmcp requests json
 
 # Optional: install uv tool if you want to run server via uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
