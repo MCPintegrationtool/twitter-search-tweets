@@ -29,12 +29,12 @@ RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
     echo 'if [ "$USE_UV" = "1" ]; then' >> /app/entrypoint.sh && \
     echo '  exec uv run server.py' >> /app/entrypoint.sh && \
     echo 'else' >> /app/entrypoint.sh && \
-    echo '  exec python server.py' >> /app/entrypoint.sh && \
+    echo '  exec python /app/server.py' >> /app/entrypoint.sh && \
     echo 'fi' >> /app/entrypoint.sh && \
     chmod +x /app/entrypoint.sh
 
 # Create non-root user (optional, safer)
 RUN useradd -m mcp && chown -R mcp /app
 USER mcp
-
+EXPOSE 8080
 ENTRYPOINT ["/app/entrypoint.sh"]
