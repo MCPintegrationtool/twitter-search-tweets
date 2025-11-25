@@ -7,7 +7,7 @@ from fastmcp import FastMCP
 # Create a basic server instance
 mcp = FastMCP(name="TwitterMCPServer")
 
-@mcp.tool(name="search recent tweets", description="Search recent tweets")
+@mcp.tool(name="search_recent_tweets", description="Search recent tweets")
 def search_recent_tweets(query_params: str) -> str:
     # To set your environment variables in your terminal run the following line:
     # export 'BEARER_TOKEN'='<your_bearer_token>'
